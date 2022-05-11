@@ -1,0 +1,52 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class RandomLoot : MonoBeHaviour
+{
+  public list<GameObject> lights;
+  public int[] table =
+  {
+    55, // normal
+    30, // rare
+    10, // high
+    5 // Legendary
+   }; 
+  public int total;
+  public int randomNumber;
+  
+  private void Start()
+  {
+    foreach(var item in table)
+    {
+      total += item;
+    }
+    
+    randomNumber = Random.Range(0, total);
+     
+     for(int i =0;i<table.Length;i++)
+     {
+      if (randomNumber <= table[i])
+      {
+        lights[i].SetActive(true);
+      }
+      else
+      {
+        randomNumber -= table[i];
+      }
+    }
+     
+    foreach(var weight in table)
+    {
+     if (randomNumber <- weight)
+     {
+        //Award item
+        Debug.Log(weight);
+      }
+     else
+     {
+     randomNumber -= weight;
+     }
+}
+}
+       
